@@ -2,6 +2,7 @@ from api.views.auth_views import RegisterView, LoginView, LogoutView, VerifyEmai
 from django.urls import path, include
 from api.views.auth_views import welcome_view 
 from django.shortcuts import redirect
+from .views.reading_views import SetReadingGoalView, UpdateProgressView, GetReadingGoalView
 
 import sys
 

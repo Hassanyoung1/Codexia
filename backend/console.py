@@ -21,7 +21,7 @@ django.setup()
 from api.models import User, Book, ReadingGoal, Highlight  # Import models after setup
 
 class FocusReaderCommand(cmd.Cmd):
-    """Command-line interface for managing Focus Reader backend."""
+    """Command-line interface for managing Codexia backend."""
     
     prompt = "(focus_reader) "
 

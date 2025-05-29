@@ -1,17 +1,11 @@
-# api/urls/__init__.py
 from django.urls import path, include
-from api.views.user_views import UserProfileView, PasswordChangeView, EmailUpdateView
 
 urlpatterns = [
-    # Authentication
-    path('auth/', include('api.urls.auth_urls')),
-    
-  
-    
-    # User Profile
-    path('user/profile/', UserProfileView.as_view(), name='user-profile'),
-    path('user/password/', PasswordChangeView.as_view(), name='password-change'),
-    path('user/email/', EmailUpdateView.as_view(), name='email-update'),\
-    path('accounts/', include('allauth.urls')),
-
+    path("auth/", include("api.urls.auth_urls")),  # ✅ Ensure this is included
+    path("reading/", include("api.urls.reading_urls")),
+    path("badges/", include("api.urls.badge_urls")),
+    path("books/", include("api.urls.book_urls")),
+    path("highlights/", include("api.urls.bookmark_urls")),
+    path("bookmarks/", include("api.urls.bookmark_urls")),
+    path("focus/", include("api.urls.focus_urls")), 
 ]
