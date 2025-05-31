@@ -17,6 +17,7 @@ Brlapi==0.8.5
 CacheControl==0.14.3
 cachetools==5.5.2
 certifi==2025.1.31
+cffi==1.17.1
 chardet==5.2.0
 charset-normalizer==3.4.1
 cliapp==1.20180812.1
@@ -124,8 +125,8 @@ psycopg==3.2.6
 psycopg-binary==3.2.6
 psycopg2-binary==2.9.7
 ptyprocess==0.7.0
-pyasn1==0.6.1
-pyasn1_modules==0.4.2
+pyasn1==0.4.8
+pyasn1_modules==0.4.1
 pycairo==1.25.1
 pycparser==2.22
 pycups==2.0.1
