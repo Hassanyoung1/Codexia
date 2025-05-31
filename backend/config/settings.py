@@ -106,8 +106,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME'),
@@ -117,12 +116,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
         'PORT': os.getenv('DB_PORT', '5432'),
 
     }
-}"""
-
+}
+"""
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3'))
 }
-
+"""
 AUTH_USER_MODEL = "api.User"
 
 

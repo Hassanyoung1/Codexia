@@ -24,7 +24,7 @@ import sys
 urlpatterns = [
     path("", welcome_view, name="home"),
     path("admin/", admin.site.urls),
-    path("api/", include("api.urls")),  # ✅ Include API routes
+    path("api/v1", include("api.urls")),  # ✅ Include API routes
 ]
 
 if "runserver" in sys.argv:
