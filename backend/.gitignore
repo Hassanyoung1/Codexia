@@ -50,4 +50,4 @@ staticfiles/
 .DS_Store
 
 # Windows specific files
-Thumbs.db
+Thumbs.db 
