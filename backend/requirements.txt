@@ -45,7 +45,7 @@ djangorestframework==3.16.0
 djangorestframework_simplejwt==5.5.0
 dnspython==2.7.0
 dotenv==0.9.9
-duplicity==2.1.4
+# duplicity==2.1.4
 ecdsa==0.19.1
 email_validator==2.2.0
 fastapi==0.115.12
