@@ -38,9 +38,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "Codexia <noreply@example.com>"
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['codexia.onrender.com', 'localhost', '127.0.0.1']
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 
 MEDIA_URL = "/media/"
