@@ -9,31 +9,31 @@ asgiref==3.8.1
 asyncpg==0.30.0
 attrs==23.2.0
 Babel==2.10.3
-bcc==0.29.1
+bcc==0.1.10
 bcrypt==3.2.2
 beautifulsoup4==4.13.3
 blinker==1.7.0
-Brlapi==0.8.5
+# Brlapi==0.8.5
 CacheControl==0.14.3
 cachetools==5.5.2
 certifi==2025.1.31
 cffi==1.17.1
 chardet==5.2.0
 charset-normalizer==3.4.1
-cliapp==1.20180812.1
+cliapp==1.0.9
 click==8.1.6
-cloud-init==24.4.1
-cmdtest==0.32+git
+# cloud-init==24.4.1
+# cmdtest==0.32+git
 colorama==0.4.6
-command-not-found==0.3
+# command-not-found==0.3
 configobj==5.0.8
 cryptography==41.0.7
-cupshelpers==1.0
+# cupshelpers==1.0
 dbus-python==1.3.2
-defer==1.0.6
+defer==1.0.4
 defusedxml==0.7.1
 distro==1.9.0
-distro-info==1.7+build1
+distro-info==1.0
 dj-database-url==2.3.0
 dj-rest-auth==7.0.1
 Django==5.2
@@ -73,7 +73,7 @@ greenlet==3.1.1
 grpcio==1.71.0
 grpcio-status==1.71.0
 gunicorn==23.0.0
-gyp==0.1
+# gyp==0.1
 h11==0.14.0
 httpcore==1.0.7
 httplib2==0.22.0
@@ -89,13 +89,13 @@ jsonpointer==2.0
 jsonschema==4.23.0
 jsonschema-path==0.3.4
 jsonschema-specifications==2024.10.1
-language-selector==0.1
+# language-selector==0.1
 launchpadlib==1.11.0
 lazr.restfulclient==0.14.6
 lazr.uri==1.0.6
 lazy-object-proxy==1.10.0
-louis==3.29.0
-Mako==1.3.2.dev0
+# louis==3.29.0
+Mako==1.3.10
 Markdown==3.5.2
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
@@ -141,9 +141,9 @@ pyrsistent==0.20.0
 pyserial==3.5
 pytest==8.3.5
 pytest-asyncio==0.26.0
-python-apt==2.7.7+ubuntu4
+# python-apt==2.7.7+ubuntu4
 python-dateutil==2.8.2
-python-debian==0.1.49+ubuntu2
+python-debian==0.1.49
 python-decouple==3.8
 python-dotenv==1.1.0
 python-jose==3.4.0
@@ -165,16 +165,16 @@ sqlparse==0.5.3
 starlette==0.46.1
 systemd-python==235
 tqdm==4.67.1
-ttystatus==0.38
+# ttystatus==0.38
 typing-inspection==0.4.0
 typing_extensions==4.13.1
-ubuntu-drivers-common==0.0.0
-ubuntu-pro-client==8001
-ufw==0.36.2
-unattended-upgrades==0.1
+# ubuntu-drivers-common==0.0.0
+# ubuntu-pro-client==8001
+# ufw==0.36.2
+# unattended-upgrades==0.1
 uritemplate==4.1.1
-urllib3==2.3.0
-usb-creator==0.3.16
+# urllib3==2.3.0
+# usb-creator==0.3.16
 userpath==1.9.1
 uvicorn==0.27.1
 uvloop==0.19.0
@@ -185,7 +185,7 @@ Werkzeug==3.1.3
 wheel==0.45.1
 wsproto==1.2.0
 xdg==5
-xkit==0.0.0
+# xkit==0.0.0
 yarl==1.19.0
 youtube-transcript-api==1.0.3
 zombie-imp==0.0.2
