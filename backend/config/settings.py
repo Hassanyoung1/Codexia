@@ -38,14 +38,16 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "Codexia <noreply@example.com>"
 
-ALLOWED_HOSTS = ['codexia.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['codexia.onrender.com', 'localhost', '127.0.0.1', 'www.codexia.onrender.com']
 
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+APPEND_SLASH = True
 
 
 # JWT Authentication Configuration
@@ -55,6 +57,7 @@ REST_FRAMEWORK = {
     ),
 }
 
+CORS_ALLOW_ALL_ORIGINS = True 
 
 # Application definition
 
@@ -71,6 +74,7 @@ INSTALLED_APPS = [
     "django_filters",
 
     'api',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -81,7 +85,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 ROOT_URLCONF = 'config.urls'
 
