@@ -189,3 +189,5 @@ xdg==5
 yarl==1.19.0
 youtube-transcript-api==1.0.3
 zombie-imp==0.0.2
+whitenoise>=6.0.0
+
