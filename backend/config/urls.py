@@ -24,8 +24,9 @@ import sys
 urlpatterns = [
     path("", welcome_view, name="home"),
     path("admin/", admin.site.urls),
-    path("api/v1", include("api.urls")),  # ✅ Include API routes
-    path('api/v1/auth/', include('api.urls.auth_urls')),  # or similar
+    path("api/v1/", include("api.urls")),  # ✅ Include API routes
+    #path('api/v1/auth/', include('api.urls.auth_urls')),  # or similar
+
 
 ]
 

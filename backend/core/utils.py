@@ -63,7 +63,7 @@ def send_otp_email(user_email, otp_code):
         user_email (str): The recipient's email address
         otp_code (str): The OTP code to send
     """
-    subject = "Your FocusReader Verification Code"
+    subject = "Your Codexia Verification Code"
     message = f"Your OTP code is: {otp_code}\nValid for 5 minutes."
     from_email = settings.DEFAULT_FROM_EMAIL
     
@@ -75,3 +75,8 @@ def send_otp_email(user_email, otp_code):
         fail_silently=False
     )
     print(f"📨 OTP sent to {user_email}")  # Debugging
+
+def send_welcome_email(user):
+    subject = f"Welcome to Codexia, {user.get_full_name() or user.email}!"
+    message = "Thanks for signing up with Google. Your reading journey begins now. 🚀"
+    send_mail(subject, message, "noreply@Codexia.com", [user.email])

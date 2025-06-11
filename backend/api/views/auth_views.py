@@ -190,18 +190,9 @@ class PasswordResetView(generics.GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+from django.utils.crypto import get_random_string
+
 class GoogleAuthView(APIView):
-    """
-    API endpoint for Google OAuth login.
-
-    **Example Usage (Doctest):**
-    >>> from rest_framework.test import APIClient
-    >>> client = APIClient()
-    >>> response = client.post("/api/auth/google-login/", {"token": "GOOGLE_JWT_TOKEN"}, format="json")
-    >>> response.status_code in [200, 401]
-    True
-    """
-
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
@@ -214,22 +205,59 @@ class GoogleAuthView(APIView):
             id_info = id_token.verify_oauth2_token(token, requests.Request(), google_client_id)
 
             email = id_info.get("email")
-            if not email:
-                return Response({"error": "Email not found in token"}, status=status.HTTP_400_BAD_REQUEST)
+            full_name = id_info.get("name", "")
+            email_verified = id_info.get("email_verified")
+            picture = id_info.get("picture")
 
-            user, created = User.objects.get_or_create(email=email, defaults={"username": email})
+            if not email or not email_verified:
+                return Response({"error": "Email missing or not verified"}, status=status.HTTP_400_BAD_REQUEST)
+
+            user = User.objects.filter(email=email).first()
+
+            if user:
+                print(f"🔐 Logging in existing user: {user.email}")
+            else:
+                print(f"🆕 Registering new user for: {email}")
+
+                # Generate safe, unique username
+                username = self.generate_unique_username(email)
+
+                user = User.objects.create_user(
+                    email=email,
+                    username=username,
+                    password=get_random_string(32),  # set a random password (not used)
+                    first_name=full_name.split()[0] if full_name else "",
+                    last_name=full_name.split()[-1] if full_name else "",
+                    profile_image_url=picture,
+                    is_verified=True,
+                )
 
             refresh = RefreshToken.for_user(user)
+
             return Response({
+                "message": "Login/signup successful",
                 "refresh": str(refresh),
                 "access": str(refresh.access_token),
                 "user": UserSerializer(user).data
             }, status=status.HTTP_200_OK)
 
-        except ValueError:
+        except ValueError as ve:
+            print(f"❌ Token error: {ve}")
             return Response({"error": "Invalid Google token"}, status=status.HTTP_401_UNAUTHORIZED)
         except Exception as e:
+            print(f"🔥 Unexpected error: {e}")
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def generate_unique_username(self, email: str) -> str:
+        base = email.split("@")[0]
+        username = base
+        counter = 1
+
+        while User.objects.filter(username=username).exists():
+            username = f"{base}{counter}"
+            counter += 1
+
+        return username
 
 class VerifyEmailView(APIView):
     """
@@ -286,6 +314,9 @@ class PasswordResetConfirmView(APIView):
         except User.DoesNotExist:
             print(f"User with email {email} not found")  # Debugging line
             return Response({'error': 'User not found'}, status=400)
+
+
+
 
 class VerifyOTPView(APIView):
     """

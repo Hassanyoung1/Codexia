@@ -63,6 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     """
 
     email = models.EmailField(unique=True, db_index=True)
+    username = models.CharField(max_length=150, unique=True, null=True, blank=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=True)
@@ -72,6 +73,10 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     is_staff = models.BooleanField(default=False)
     google_auth = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    profile_image_url = models.URLField(blank=True, null=True)
+    first_login = models.BooleanField(default=True)
+    last_login = models.DateTimeField(blank=True, null=True)
+
 
     otp = models.CharField(max_length=6, blank=True, null=True)
     otp_expires_at = models.DateTimeField(blank=True, null=True)

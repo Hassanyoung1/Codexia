@@ -9,7 +9,7 @@ import sys
 
 
 def home_redirect(request):
-    return redirect("/api/auth/signup/") 
+    return redirect("/api/v1/auth/signup/") 
 
 urlpatterns = [   
     path("", welcome_view, name="home"),  # ✅ Now "/" shows a welcome message

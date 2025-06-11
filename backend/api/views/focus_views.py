@@ -83,10 +83,19 @@ class BlockingViewSet(viewsets.ViewSet):
     """Handles app and website blocking."""
     permission_classes = [IsAuthenticated]
 
+    """def activate_blocking(self, request):
+        Activate blocking of specified apps and websites.
+        self.enforce_blocking(request.user)
+        return Response({"message": "Blocking activated"}, status=status.HTTP_200_OK)"""
+    
     def activate_blocking(self, request):
         """Activate blocking of specified apps and websites."""
-        self.enforce_blocking(request.user)
-        return Response({"message": "Blocking activated"}, status=status.HTTP_200_OK)
+        config = BlockingService.enforce(request.user)
+        return Response({"message": "Blocking activated", "config": config}, status=status.HTTP_200_OK)
+    
+    def restore_access(self, user):
+         user_identifier = getattr(user, "username", None) or getattr(user, "email", "Unknown User")
+         print(f"Restoring access for user: {user_identifier}")
 
     def deactivate_blocking(self, request):
         """Deactivate blocking and restore access."""

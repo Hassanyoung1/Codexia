@@ -15,3 +15,4 @@ urlpatterns = [
     path("highlights/", HighlightListView.as_view(), name="highlight-list-create"),
     path("highlights/<int:pk>/delete/", HighlightDeleteView.as_view(), name="highlight-delete"),
 ]
+

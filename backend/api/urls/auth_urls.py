@@ -9,6 +9,8 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path("reset-password/", PasswordResetView.as_view(), name="reset-password"),
     path("google-login/", GoogleAuthView.as_view(), name="google-login"),
+    path("google-auth/", GoogleAuthView.as_view(), name="google-auth"),
+
     path("verify-email/", VerifyEmailView.as_view(), name="verify-email"),
     path("reset-password-confirm/", PasswordResetConfirmView.as_view(), name="reset-password-confirm"),
     path("verify-otp/", VerifyOTPView.as_view(), name="verify-otp"),  # ✅ New route for OTP verification

@@ -23,7 +23,7 @@ from api.models import User, Book, ReadingGoal, Highlight  # Import models after
 class FocusReaderCommand(cmd.Cmd):
     """Command-line interface for managing Codexia backend."""
     
-    prompt = "(focus_reader) "
+    prompt = "(Codexia) "
 
     objects = {
         'User': User,

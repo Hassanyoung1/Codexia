@@ -33,7 +33,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ("email", "first_name", "last_name", "password")
+        fields = ("email", "username", "first_name", "last_name", "password")
 
     def create(self, validated_data):
         """
@@ -103,6 +103,7 @@ class GoogleAuthSerializer(serializers.Serializer):
     True
     """
     email = serializers.EmailField()
+    username = serializers.CharField(source="email")
     first_name = serializers.CharField()
     last_name = serializers.CharField()
     google_auth = serializers.BooleanField(default=True)
@@ -119,3 +120,8 @@ class GoogleAuthSerializer(serializers.Serializer):
             "access_token": str(refresh.access_token),
             "refresh_token": str(refresh),
         }
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "email", "username", "first_login", "profile_image_url"]
